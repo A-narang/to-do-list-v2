@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="tab">
+        <button class="tablinks" id="today">Today's to-do</button>
+        <button class="tablinks" id="category">Add Category</button>
+    </div>
+
+    <div id="today's-to-do">
+        <h1>This is a to-do list</h1>
+        <div id="create-task">
+            <button id="add-to-do">+</button>
+            <input type="text" id="input" placeholder="new to-do">
+            <select id="categories">
+            </select>
+        </div>
+        <div id="task-list">
+        </div>
+    </div>
+
+    <div id="manage-categories" hidden>
+        <p>Add Category</p>
+        <div id="add-category">
+            <button>+</button>
+            <input type="text" id="input-cat" placeholder="new category">
+        </div>
+        <div id="list-of-categories">
+        </div>
+    </div>
+
+    <script src="js/tasks.js"></script>
+    <script src="js/categories.js"></script>
+</body>
+
+</html>

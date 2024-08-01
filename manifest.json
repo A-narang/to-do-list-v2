@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "to-do-list-v2",
+    "description": "version 2 of a to do list",
+    "version": "1.0",
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "blue.png"
+    }
+  }
