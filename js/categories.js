@@ -8,15 +8,18 @@ renderCategories();
 renderCategoriesSelect();
 
 addCategory.addEventListener("click", (event) => {
-    let newCat = document.getElementById("input-cat").value
-    if (newCat.split(' ').join('').length < 1 || !categories.includes(newCat.value)) {
-        console.log("name must not already exist and be more than 1 ch")
+    let newCat = document.getElementById("input-cat").value.trim();
+    if (newCat.length < 1) {
+        console.log("Name must not be empty and must be more than 1 character: " + newCat);
+    } else if (categories.includes(newCat)) {
+        console.log("Category already exists: " + newCat);
     } else {
         categories.push(newCat);
-        document.getElementById("input-cat").value = "";
         updateCategories();
+        console.log("Added new category");
     }
-})
+    document.getElementById("input-cat").value = "";
+});
 
 listCategories.addEventListener("click", (event) => {
     console.log(event.target.id)
