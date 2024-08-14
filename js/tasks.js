@@ -52,7 +52,8 @@ tabLinks.forEach(button => {
 
 // ddd new task to list
 addTask.addEventListener("click", (event) => {
-    if (document.getElementById("input").value !== "" ) {
+    if (document.getElementById("input").value !== "") {
+        console.log("val: " + categoriesSelect.value)
         let newTask = new Task(document.getElementById("input").value, categoriesSelect.value);
         document.getElementById("input").value = "";
         categoriesSelect.value = "";
@@ -93,11 +94,11 @@ function renderTasks() {
     for (let c = 0; c < categories.length; c++) {
         t = tasks.filter((t) => t.category === categories[c] && !t.overdue && !t.complete);
         if (t.length > 0) {
-            tasksHTML += `<h1>${categories[c]}</h1>`;
+            tasksHTML += `<h2>${categories[c]}</h2>`;
             tasksHTML = renderTasksHelper(t, tasksHTML)
         }
     }
-    tasksHTML += `<h1>complete</h1>`;
+    tasksHTML += `<h2>complete</h2>`;
     t = tasks.filter((t) => !t.overdue && t.complete);
     tasksHTML = renderTasksHelper(t, tasksHTML)
     //tasksHTML += `<h1>overdue</h1>`;
@@ -111,10 +112,14 @@ function renderTasksHelper(list, tasksHTML) {
     for (let i = 0; i < list.length; i++) {
         let checked = list[i].complete ? "checked" : "";
         tasksHTML += `
-    <div class="checkbox">
-        <input type="checkbox" value="check" name="${list[i].dateCreated}" ${checked}>
-        <label for="${list[i].dateCreated}">${list[i].description}</label>
-        <button class="delete-btn" value="delete" id="${list[i].dateCreated}">x</button>
+    <div class="task-display">
+        <div class="task">
+            <input type="checkbox" value="check" name="${list[i].dateCreated}" ${checked}>
+            <label for="${list[i].dateCreated}">${list[i].description}</label>
+        </div>
+        <div class="actions">
+            <button class="delete-btn" value="delete" id="${list[i].dateCreated}">x</button>
+        </div>
     </div>`
     }
     return tasksHTML

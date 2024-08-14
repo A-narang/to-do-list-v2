@@ -8,18 +8,20 @@ renderCategories();
 renderCategoriesSelect();
 
 addCategory.addEventListener("click", (event) => {
-    let newCat = document.getElementById("input-cat").value.trim();
-    if (newCat.length < 1) {
-        console.log("Name must not be empty and must be more than 1 character: " + newCat);
-    } else if (categories.includes(newCat)) {
-        console.log("Category already exists: " + newCat);
+    let inputElement = document.getElementById("input-cat");
+
+    if (inputElement.value.trim().length < 1) {
+        console.log("Name must not be empty and must be more than 1 character: " + inputElement.value);
+    } else if (categories.includes(inputElement.value)) {
+        console.log("Category already exists: " + inputElement.value);
     } else {
-        categories.push(newCat);
+        categories.push(inputElement.value);
         updateCategories();
-        console.log("Added new category");
+        console.log("Added new category: " + inputElement.value);
     }
-    document.getElementById("input-cat").value = "";
+    inputElement.value = "";
 });
+
 
 listCategories.addEventListener("click", (event) => {
     console.log(event.target.id)
@@ -39,8 +41,10 @@ function renderCategories() {
     let catHTML = "";
     for (let i = 0; i < categories.length; i++) {
         catHTML += `
-        <li>${categories[i]}</li>
-         <button class="delete-btn" value="delete-cat" id="${categories[i]}">x</button>`
+        <div class="cat">
+            <li>${categories[i]}</li>
+            <button class="delete-btn" value="delete-cat" id="${categories[i]}">x</button>
+        </div>`
     }
     listCategories.innerHTML = catHTML;
 }
